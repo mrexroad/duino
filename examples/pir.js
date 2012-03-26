@@ -1,4 +1,4 @@
-var arduino = require('../'),
+var arduino = require("../"),
     board, pir;
 
 board = new arduino.Board({
@@ -10,13 +10,13 @@ pir = new arduino.PIR({
   pin: 7
 });
 
-// 'calibrated' event fired when PIR sensor is
+// "calibrated" event fired when PIR sensor is
 // ready to detect movement/motion in observable range
 //
 // All events receive error and date arguments
-pir.on('calibrated', function(err, date) {
+pir.on("calibrated", function(err, date) {
 
-  console.log('calibrated');
+  console.log("calibrated");
 
   // Current sensor data stored in properties
   // of this PIR instance:
@@ -25,20 +25,20 @@ pir.on('calibrated', function(err, date) {
   //     0 No motion currently detected
   //     1 Motion currently detected
 
-  // 'motionstart' event fired when motion occurs
+  // "motionstart" event fired when motion occurs
   // within the observable range of the PIR sensor
-  this.on('motionstart', function(err, date) {
+  this.on("motionstart", function(err, date) {
 
-    console.log('motionstart', this.state);
+    console.log("motionstart", this.state);
     console.log( date );
 
   });
 
-  // 'motionend' event fired when motion has ceased
+  // "motionend" event fired when motion has ceased
   // within the observable range of the PIR sensor
-  this.on('motionend', function(err, date) {
+  this.on("motionend", function(err, date) {
 
-    console.log('motionend', this.state);
+    console.log("motionend", this.state);
 
   });
 });

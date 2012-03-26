@@ -1,4 +1,4 @@
-var arduino = require('../'),
+var arduino = require("../"),
     board, sensor;
 
 board = new arduino.Board({
@@ -7,10 +7,10 @@ board = new arduino.Board({
 
 sensor = new arduino.Sensor({
   board: board,
-  pin: 'A0'
+  pin: "A0"
 });
 
-sensor.on('read', function(err, value) {
+sensor.on("read", function(err, value) {
   value = +value;
   // |value| is the raw sensor output
   console.log( value );

@@ -2,35 +2,16 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    pkg: '<json:package.json>',
-    meta: {
-      banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("m/d/yyyy") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
-    },
-    concat: {
-      dist: {
-        src: ['<banner>', '<file_strip_banner:lib/<%= pkg.name %>.js>'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
-    },
-    min: {
-      dist: {
-        src: ['<banner>', '<config:concat.dist.dest>'],
-        dest: 'dist/<%= pkg.name %>.min.js'
-      }
-    },
+    pkg: "<json:package.json>",
     test: {
-      files: ['test/**/*.js']
+      files: ["test/**/*.js"]
     },
     lint: {
-      files: ['grunt.js', 'lib/**/*.js', 'test/**/*.js']
+      files: ["grunt.js", "lib/**/*.js", "test/**/*.js"]
     },
     watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint test'
+      files: "<config:lint.files>",
+      tasks: "default"
     },
     jshint: {
       options: {
@@ -43,17 +24,16 @@ module.exports = function(grunt) {
         sub: true,
         undef: true,
         boss: true,
-        eqnull: true
+        eqnull: true,
+        node: true
       },
       globals: {
-        exports: true,
-        module: false
+        exports: true
       }
-    },
-    uglify: {}
+    }
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint test concat min');
+  grunt.registerTask("default", "lint test");
 
 };

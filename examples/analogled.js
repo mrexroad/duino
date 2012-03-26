@@ -1,4 +1,4 @@
-var arduino = require('../');
+var arduino = require("../");
 
 var board = new arduino.Board({
   debug: true
@@ -6,9 +6,9 @@ var board = new arduino.Board({
 
 var aled = new arduino.Led({
 	board: board,
-	pin: 'A0'
+	pin: "A0"
 });
 
-board.on('ready', function(){
+board.on("ready", function(){
   aled.fade();
 });
