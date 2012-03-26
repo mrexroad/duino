@@ -1,9 +1,12 @@
 #include <Servo.h>
+#include <SoftwareSerial.h>
 
 
 bool debug = false;
+bool gps = false;
 
 int index = 0;
+int gindex = 0;
 
 char messageBuffer[12];
 char cmd[3];
@@ -11,7 +14,12 @@ char pin[3];
 char val[4];
 char aux[4];
 
+char buffer[100];
+char response[100];
+
 Servo servo;
+SoftwareSerial GPS = SoftwareSerial(2, 3);
+
 
 void setup() {
   Serial.begin(115200);
@@ -23,6 +31,24 @@ void loop() {
     if (x == '!') index = 0;      // start
     else if (x == '.') process(); // end
     else messageBuffer[index++] = x;
+  }
+
+  // If gps boolean flag has been set to true
+  // via API call to gps.init();
+  if (gps) {
+    while(GPS.available()) {
+      char g = GPS.read();
+      // At the beginning of a GPS sentence
+      Serial.println(" ");
+      // Serial.println("ho");
+      if (g == '$') {
+        gindex = 0;      // start
+        // sprintf(response, "%s::%s", pin, buffer);
+        // Serial.println(response);
+        Serial.println(buffer);
+      }
+      buffer[gindex++] = g;
+    }
   }
 }
 
@@ -65,6 +91,7 @@ void process() {
     case 2:  dr(pin,val);              break;
     case 3:  aw(pin,val);              break;
     case 4:  ar(pin,val);              break;
+    case 96: handleGPS(pin,val,aux);   break;
     case 97: handlePing(pin,val,aux);  break;
     case 98: handleServo(pin,val,aux); break;
     case 99: toggleDebug(val);         break;
@@ -171,6 +198,25 @@ int getPin(char *pin) { //Converts to A0-A5, and returns -1 on error
   return ret;
 }
 
+void handleGPS(char *pin, char *val, char *aux) {
+  if (debug) Serial.println("ss");
+  int p = getPin(pin);
+
+  if(p == -1) { if(debug) Serial.println("badpin"); return; }
+  Serial.println("Initializing GPS");
+
+  // 01(1) Connect
+  if (atoi(val) == 1) {
+    GPS.begin(4800);
+
+    // Set the global gps flag to true
+    // this will tell the main event loop that
+    // this program expects gps readings
+    gps = true;
+
+    Serial.println("GPS Connected");
+  }
+}
 /*
  * Handle Ping commands
  * fire, read
