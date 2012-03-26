@@ -1,4 +1,4 @@
-" arduino = require('../'),
+var arduino = require('../'),
     board, gps;
 
 board = new arduino.Board({
