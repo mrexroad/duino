@@ -225,6 +225,22 @@ Pins can be sent as an integer or a string(`1`, `2`, `"3"`, `"A0"`)
 *  `board.HIGH`(`255`)
 *  integer/string from `0`-`255` for PWM pins
 
+
+## Development
+
+# Requires grunt for code linting & test running.
+
+```bash
+npm install grunt -g
+```
+
+Run with:
+
+```
+grunt
+```
+
+
 # license
 
 (The MIT License)
