@@ -1,19 +1,36 @@
 {
-  "author": "Cam Pedersen <diffference@gmail.com> (http://campedersen.com/)",
   "name": "duino",
-  "description": "Arduino framework for mad scientists",
-  "version": "0.0.5",
+  "description": "A framework for working with Arduinos in node.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ecto/duino",
+  "author": {
+    "name": "Cam Pedersen",
+    "email": "diffference@gmail.com",
+    "url": "none"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/ecto/duino.git"
   },
-  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/ecto/duino/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ecto/duino/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.3.0"
+  },
+  "keywords": [],
   "engines": {
-    "node": "*"
+    "node": ">= 0.6.13"
   },
-  "dependencies": {
-    "serialport": "*",
-    "colors": "*"
-  },
-  "devDependencies": {}
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  }
 }
