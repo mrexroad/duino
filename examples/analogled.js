@@ -6,7 +6,7 @@ var board = new arduino.Board({
 
 var aled = new arduino.Led({
 	board: board,
-	pin: 9
+	pin: 'A0'
 });
 
 board.on('ready', function(){
