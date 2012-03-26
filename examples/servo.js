@@ -52,5 +52,3 @@ servo.on('attached', function(err) {
 // To test, use the following:
 // http://arduino.cc/en/uploads/Tutorial/sweep_BB.png
 //
-// More information:
-// http://www.ladyada.net/learn/sensors/pir.html
