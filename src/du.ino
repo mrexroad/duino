@@ -35,6 +35,10 @@ void loop() {
 
   // If gps boolean flag has been set to true
   // via API call to gps.init();
+  //
+  // TODO: Abstract the process of creating new
+  //       SoftwareSerial objects to allow for
+  //       arbitrary module connections
   if (gps) {
     while(GPS.available()) {
       char g = GPS.read();
