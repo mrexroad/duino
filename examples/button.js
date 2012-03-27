@@ -7,10 +7,10 @@ var button = new arduino.Button({
   pin: 2
 });
 
-button.on('down', function(){
+button.on('down', function() {
   console.log('DOWN');
 });
 
-button.on('up', function(){
+button.on('up', function() {
   console.log('UP');
 });

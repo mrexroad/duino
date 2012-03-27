@@ -12,10 +12,10 @@ var led = new arduino.Led({
   pin: 13
 });
 
-button.on('down', function(){
+button.on('down', function() {
   led.on();
 });
 
-button.on('up', function(){
+button.on('up', function() {
   led.off();
 });

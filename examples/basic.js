@@ -5,7 +5,7 @@ var board = new arduino.Board({
   debug: true
 });
 
-board.on('connected', function(){
+board.on('connected', function() {
   board.write('HELLO WORLD');
 });
 

@@ -8,7 +8,7 @@ var piezo = new arduino.Piezo({
   board: board
 });
 
-board.on('ready', function(){
+board.on('ready', function() {
   piezo.note('a', 1000);
 
   setTimeout(function(){

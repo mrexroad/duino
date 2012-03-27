@@ -9,6 +9,6 @@ var led = new arduino.Led({
   pin: 9
 });
 
-board.on('ready', function(){
+board.on('ready', function() {
   led.blink();
 });

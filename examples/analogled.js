@@ -9,6 +9,6 @@ var aled = new arduino.Led({
 	pin: 'A0'
 });
 
-board.on('ready', function(){
+board.on('ready', function() {
   aled.fade();
 });
