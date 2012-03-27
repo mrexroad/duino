@@ -17,13 +17,13 @@ servo = new arduino.Servo({
 });
 
 // Once servo is attached:
-//  - "read"
+//  - 'read'
 //      - log position
-//  - "aftersweep"
+//  - 'aftersweep'
 //      - blink the led
 //      - read the position
 //      - detach the servo
-//  - "detached"
+//  - 'detached'
 //      - log detach message
 //
 //  - execute full sweep

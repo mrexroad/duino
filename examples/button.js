@@ -1,4 +1,4 @@
-var arduino = require("../");
+var arduino = require('../');
 
 var board = new arduino.Board();
 
@@ -7,10 +7,10 @@ var button = new arduino.Button({
   pin: 2
 });
 
-button.on("down", function(){
-  console.log("DOWN");
+button.on('down', function(){
+  console.log('DOWN');
 });
 
-button.on("up", function(){
-  console.log("UP");
+button.on('up', function(){
+  console.log('UP');
 });
